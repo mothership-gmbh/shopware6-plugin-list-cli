@@ -1,0 +1,26 @@
+{
+  "name": "mothership-gmbh/shopware6-plugin-list-cli",
+  "description": "Filter the output of the plugin:list command",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.0.0",
+  "autoload": {
+    "psr-4": {
+      "Mothership\\PluginListCliExtension\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Mothership GmbH",
+      "email": "office@mothership.de"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "shopware/core": "^6.4",
+    "shopware/recovery": "^6.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5"
+  }
+}
