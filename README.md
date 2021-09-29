@@ -1,0 +1,1 @@
+# shopware6-plugin-list-cli
