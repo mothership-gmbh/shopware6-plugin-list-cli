@@ -4,7 +4,7 @@ namespace Mothership\PluginListCliExtension\Framework\Plugin\Command;
 
 use Shopware\Core\Framework\Adapter\Console\ShopwareStyle;
 use Shopware\Core\Framework\Context;
-use Shopware\Core\Framework\DataAbstractionLayer\EntityRepositoryInterface;
+use Shopware\Core\Framework\DataAbstractionLayer\EntityRepository;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Criteria;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\ContainsFilter;
 use Shopware\Core\Framework\DataAbstractionLayer\Search\Filter\EqualsFilter;
@@ -20,7 +20,7 @@ class PluginListCommand extends Command
 {
     protected static $defaultName = 'plugin:list';
 
-    /** @var EntityRepositoryInterface */
+    /** @var EntityRepository */
     private $pluginRepo;
 
     private $supportedFields = [
@@ -29,7 +29,7 @@ class PluginListCommand extends Command
         'upgradeable'
     ];
 
-    public function __construct(EntityRepositoryInterface $pluginRepo)
+    public function __construct(EntityRepository $pluginRepo)
     {
         parent::__construct();
         $this->pluginRepo = $pluginRepo;
@@ -152,7 +152,7 @@ class PluginListCommand extends Command
      * @param array $query
      * @param boolean $isRaw
      */
-    private function buildCustomCriteria(ShopwareStyle $io, Criteria $criteria, array $query, bool $isRaw = false)
+    private function buildCustomCriteria(ShopwareStyle $io, Criteria $criteria, array $query, bool $isRaw = false): void
     {
         if (false === $isRaw) {
             $io->comment(vsprintf('Filtering for column "%s" with value "%s"', $query));
@@ -210,7 +210,7 @@ class PluginListCommand extends Command
      * @param string $filter
      * @param boolean $isRaw
      */
-    private function buildBasicCriteria(ShopwareStyle $io, Criteria $criteria, string $filter, bool $isRaw = false)
+    private function buildBasicCriteria(ShopwareStyle $io, Criteria $criteria, string $filter, bool $isRaw = false): void
     {
         if (false === $isRaw) {
             $io->comment(sprintf('Filtering for: %s', $filter));
